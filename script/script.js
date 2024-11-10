@@ -3,6 +3,8 @@ console.log("connected to script");
 const results = document.querySelector("input").innerHTML;
 //console.log(results);
 const myDiv = document.querySelector(".cont");
+const h2tag = document.getElementById("h2tag");
+const h3tag = document.getElementById("h3tag");
 //console.log(design);
 
 //myDiv.style.backgroundColor = "blue";
@@ -11,16 +13,50 @@ const form = document.getElementById("formId"); // Replace 'myList' with the ID 
 
 const inputVal = form.elements["myInput"];
 console.log(inputVal);
+//create element
+const para = document.createElement("div");
+const para2 = document.createElement("div");
+const para3 = document.createElement("div");
+para.innerText = "This is a div tag.";
+para2.innerText = "This is a div tag.";
+para3.innerText = "This is a div tag.";
+para.style.border = "1px solid, black";
+para2.style.border = "1px solid, black";
+para3.style.border = "1px solid, black";
+document.body.appendChild(para);
+document.body.appendChild(para2);
+document.body.appendChild(para3);
+
 //event listener
 form.addEventListener("submit", validate);
-//function declaration
+
+//main function declaration
 function validate(evt) {
   evt.preventDefault();
   const input = inputVal.value;
   console.log(input);
+  game();
   design = "100%";
-  myDiv.style.backgroundColor = "blue";
-  myDiv.style.height = "300px";
+
+  // h2tag.innerText = "welcome to my webpage";
+  //h2tag.style.color = "green";
+}
+
+//game
+function game() {
+  const input = inputVal.value;
+
+  if (input > 0 && input <= 10) {
+    myDiv.style.backgroundColor = "blue";
+    myDiv.style.height = "300px";
+    h2tag.innerText = "welcome to my webpage";
+    h2tag.style.color = "green";
+    console.log("congratulations, you get to explore my webpage");
+  } else {
+    console.log("try again");
+    h2tag.innerText = "Try Again!";
+    h2tag.style.color = "red";
+  }
 }
 
 // results.forEach((result) => {
