@@ -17,15 +17,26 @@ console.log(inputVal);
 const para = document.createElement("div");
 const para2 = document.createElement("div");
 const para3 = document.createElement("div");
-para.innerText = "This is a div tag.";
+const mainDiv = document.createElement("div");
+mainDiv.style.border = "1px solid, black";
+mainDiv.style.height = "200px";
+mainDiv.style.display = "flex";
+mainDiv.style.justifyContent = "space-around";
+
+//div tag inner text.
+para.innerText = "this is a div tag.";
 para2.innerText = "This is a div tag.";
 para3.innerText = "This is a div tag.";
+//setting border and order attributes to div tags
+
 para.style.border = "1px solid, black";
 para2.style.border = "1px solid, black";
 para3.style.border = "1px solid, black";
-document.body.appendChild(para);
-document.body.appendChild(para2);
-document.body.appendChild(para3);
+//appending to body
+mainDiv.appendChild(para);
+mainDiv.appendChild(para2);
+mainDiv.appendChild(para3);
+document.body.appendChild(mainDiv);
 
 //event listener
 form.addEventListener("submit", validate);
