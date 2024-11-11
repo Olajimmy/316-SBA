@@ -1,4 +1,5 @@
 console.log("connected to script");
+
 const form2 = document.getElementById("registration");
 console.log(form2);
 
@@ -15,13 +16,12 @@ console.log(confirmPassword);
 console.log(checkBox);
 
 form2.addEventListener("submit", validate2);
-//form2 function declaration
-
-// further functions
+//form function declaration
 
 function validate2(evt) {
   const name = uName.value;
   evt.preventDefault();
+
   //console.log(name);
   if (name !== "" && hasTwoUniqueChars(name)) {
     console.log("you entered", name);
@@ -43,18 +43,7 @@ function validate2(evt) {
   }
   //password invocation
   passwordValidation(password);
-
-  //checkbox invocation
-  //var dump
-
-  //   let userName = document.getElementById("user").value;
-  //   let email1 = document.getElementById("emailID").value;
-  //   let password1 = document.getElementById("passwordId").value;
-  //   // let terms = document.getElementById("termsId").value;
-
-  localStorage.setItem("user", uName);
-  localStorage.setItem("emailadd", email);
-  localStorage.setItem("pass", password);
+  confirmPass();
 }
 
 //username characters validation
@@ -99,12 +88,16 @@ function passwordValidation(password) {
 }
 
 //confirm password fuction
-function confirm() {
+function confirmPass() {
   const comPassword = confirmPassword.value;
+  const passwordVal = password.value;
+
   if (comPassword == passwordVal) {
     console.log("password matches");
+    confirm("would you like us to save your informations?");
   } else {
     console.log("password doesnt match");
+    alert("Password doesn't match!");
   }
 }
 
@@ -140,7 +133,6 @@ function validate(evt) {
   design = "100%";
   //body manipulation
   inside.style.color = "red";
-  inside.innerText = "yes you're in for a treat.";
 
   //
 
@@ -153,7 +145,8 @@ function game() {
   const input = inputVal.value;
 
   if (input > 0 && input <= 10) {
-    myDiv.style.backgroundColor = "blue";
+    inside.innerText = "yes you're in for a treat.";
+    myDiv.style.backgroundColor = "#3f88c5";
     myDiv.style.height = "300px";
     h2tag.innerText = "welcome to my webpage";
     h2tag.style.color = "green";
@@ -163,76 +156,81 @@ function game() {
     const para2 = document.createElement("div");
     const para3 = document.createElement("div");
     const mainDiv = document.createElement("div");
-    mainDiv.style.border = "1px solid, black";
+    mainDiv.style.border = "0px solid, black";
     mainDiv.style.height = "200px";
     mainDiv.style.display = "flex";
     mainDiv.style.justifyContent = "space-around";
 
     //div tag inner text.
-    para.innerText = "this is a div tag.";
-    para2.innerText = "This is a div tag.";
-    para3.innerText = "This is a div tag.";
+    para.innerText = "This can be a card.";
+    para2.innerText = "This can be a card.";
+    para3.innerText = "This cab also be a card.";
     //setting border and order attributes to div tags
 
-    para.style.border = "1px solid, black";
-    para.style.backgroundImage = "url(view.jpg)";
+    para.style.border = "0px solid, black";
+    para.style.backgroundColor = "#e8cee4";
 
-    para2.style.border = "1px solid, black";
-    para3.style.border = "1px solid, black";
-    //appending to body
+    para2.style.border = "0px solid, black";
+    para2.style.backgroundColor = "#cfb3ec";
+
+    para3.style.border = "0px solid, black";
+    para3.style.backgroundColor = "#ac9cf6";
+
+    //appending to main div
     mainDiv.appendChild(para);
     mainDiv.appendChild(para2);
     mainDiv.appendChild(para3);
+    //appending main div to body
     document.body.appendChild(mainDiv);
+    iterate();
   } else {
     console.log("try again");
     h2tag.innerText = "Try Again!";
     h2tag.style.color = "red";
+    inside.innerText = "You need to pass the game!.";
   }
 }
 
-// results.forEach((result) => {
-//   const listItem = document.createElement("li");
-//   listItem.textContent = inputVal.value; // Assuming each result in the array is a string
-//   list.appendChild(listItem);
-// });
+function iterate() {
+  const elements = document.querySelectorAll(".my-class");
+  const a = elements.length;
+  //console.log(a);
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].style.color = "green";
+    // elements[i].innerText = "can we be friends?";
 
-// // importing data
-// const inputElement = document.querySelector("myInput"); // Using name attribute
-// //const currentValue = inputElement.value;
-// const button = document.querySelector("button"); // importing the button
-// console.log(button);
-// button.addEventListener("submit", aHandler);
+    //console.log(elements[i]);
+  }
+}
 
-// function aHandler(evt) {
-//     let label = document.querySelector('li');
+// 1. Create a template element
+const template = document.createElement("template");
+template.innerHTML = `
+  <div class="item">
+    <h3>Item Title</h3>
+    <p>Item Description</p>
+  </div>
+`;
 
-// }
-// aHandler();
-//function declaration
-//replace with functin head // function changeValue() {
+// 2. Create a document fragment
+const fragment = document.createDocumentFragment();
 
-// function aHandler(evt) {
-//   const inputElement = document.getElementById("myInput");
-//   val = inputElement.value;
-//   console.log(val);
-//   if (val == 5) {
-//     console.log(
-//       "good job! you won. you now have permission to explore the rest of my page"
-//     );
-//     // const button = document.querySelector("button");
-//     // console.log(button);
-//     button.style.backgroundColor = "red";
+// 3. Clone the template content into the fragment
+const clone = template.content.cloneNode(true);
+fragment.appendChild(clone);
+
+// 4. Manipulate the cloned content within the fragment
+const itemTitle = fragment.querySelector(".item h3");
+itemTitle.textContent = "New Item Title";
+
+// 5. Append the fragment to the DOM
+document.body.appendChild(fragment);
+//confirm pop up
+// function popup() {
+//   if (confirm("Press a button!")) {
+//     txt = "You pressed OK!";
 //   } else {
-//     console.log("try again");
+//     txt = "You pressed Cancel!";
 //   }
-
-//   if (val == false) {
-//     const list = document.querySelector("li");
-//     console.log(list);
-//     // let newList = document.createElement("li");
-//     // let caList = document.querySelector("li");
-//     // console.log(caList);
-//     // caList = list.append(val);
-//   }
-//}
+// }
+// popup();
