@@ -10,7 +10,10 @@
   <body>
     <h1>Web Application (value manipulation) Test</h1>
 
-    <div class="cont">hey</div>
+    <div class="cont">
+      <h3>Hey welcome to my website, you made it!</h3>
+      <img src="view.jpg" width="90px" height="100px" />
+    </div>
 
     <form id="formId">
       <label>
@@ -19,13 +22,42 @@
         </h2>
         <h3 id="h3tag">
           Enter Any number between 1 and 10 to get permission to explore the
-          rest of this page. hint: enter 5. i didn't tell you this number.
+          rest of this page. hint: enter 5. it wasn't me that tell you this
+          number.
         </h3>
-        <label> enter here <input type="text" id="myInput" /></label>
+        <label>
+          Type it here <input type="text" id="myInput" placeholder="-_-"
+        /></label>
 
-        <button>Change Value</button>
+        <button>shoot your shot.</button>
       </label>
     </form>
+    <br />
+    <!-- second form -->
+    <form id="registration" style="border: 1px solid black">
+      <input
+        id="user"
+        name="username"
+        type="text"
+        pattern="^[a-zA-Z]*$"
+        placeholder="Username"
+      />
+      <br />
+      <input name="email" type="text" id="emailId" placeholder="Email" />
+      <br />
+      <input
+        name="password"
+        type="text"
+        id="passwordId"
+        placeholder="Password"
+      />
+      <br />
+      <input name="passwordCheck" type="text" placeholder="Repeat Password" />
+      <br /><br />
+
+      <input type="submit" value="Register" id="termsId" />
+    </form>
+
     <br />
     <li id="myList"></li>
   </body>
